@@ -9,10 +9,10 @@ output "jx_requirements" {
 // ----------------------------------------------------------------------------
 // Storage (backup, logs, reports, repo)
 // ----------------------------------------------------------------------------
-output "backup_bucket_url" {
-  value       = module.backup.backup_bucket_url
-  description = "The bucket where backups from velero will be stored"
-}
+# output "backup_bucket_url" {
+#   value       = module.backup.backup_bucket_url
+#   description = "The bucket where backups from velero will be stored"
+# }
 
 output "lts_logs_bucket" {
   value       = length(module.cluster.logs_jenkins_x) > 0 ? module.cluster.logs_jenkins_x[0] : ""
@@ -105,37 +105,37 @@ output "cluster_ssm_iam_role" {
 // ----------------------------------------------------------------------------
 // Vault Resources
 // ----------------------------------------------------------------------------
-output "vault_unseal_bucket" {
-  value       = module.vault.vault_unseal_bucket
-  description = "The Vault storage bucket"
-}
+# output "vault_unseal_bucket" {
+#   value       = module.vault.vault_unseal_bucket
+#   description = "The Vault storage bucket"
+# }
 
-output "vault_dynamodb_table" {
-  value       = module.vault.vault_dynamodb_table
-  description = "The Vault DynamoDB table"
-}
+# output "vault_dynamodb_table" {
+#   value       = module.vault.vault_dynamodb_table
+#   description = "The Vault DynamoDB table"
+# }
 
-output "vault_kms_unseal" {
-  value       = module.vault.kms_vault_unseal
-  description = "The Vault KMS Key for encryption"
-}
+# output "vault_kms_unseal" {
+#   value       = module.vault.kms_vault_unseal
+#   description = "The Vault KMS Key for encryption"
+# }
 
-output "vault_user_id" {
-  value       = length(module.vault.vault_user_id) > 0 ? module.vault.vault_user_id[0] : ""
-  description = "The Vault IAM user id"
-}
+# output "vault_user_id" {
+#   value       = length(module.vault.vault_user_id) > 0 ? module.vault.vault_user_id[0] : ""
+#   description = "The Vault IAM user id"
+# }
 
-output "vault_user_secret" {
-  value       = length(module.vault.vault_user_secret) > 0 ? module.vault.vault_user_secret[0] : ""
-  description = "The Vault IAM user secret"
-}
+# output "vault_user_secret" {
+#   value       = length(module.vault.vault_user_secret) > 0 ? module.vault.vault_user_secret[0] : ""
+#   description = "The Vault IAM user secret"
+# }
 
 // ----------------------------------------------------------------------------
 // DNS
 // ----------------------------------------------------------------------------
-output "subdomain_nameservers" {
-  value = module.dns.subdomain_nameservers
-}
+# output "subdomain_nameservers" {
+#   value = module.dns.subdomain_nameservers
+# }
 
 // ----------------------------------------------------------------------------
 // Connection string

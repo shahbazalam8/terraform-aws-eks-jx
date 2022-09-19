@@ -1,13 +1,13 @@
 // ----------------------------------------------------------------------------
 // Configure providers
 // ----------------------------------------------------------------------------
-provider "helm" {
-  kubernetes {
-    host                   = module.cluster.cluster_host
-    cluster_ca_certificate = module.cluster.cluster_ca_certificate
-    token                  = module.cluster.cluster_token
-  }
-}
+# provider "helm" {
+#   kubernetes {
+#     host                   = module.cluster.cluster_host
+#     cluster_ca_certificate = module.cluster.cluster_ca_certificate
+#     token                  = module.cluster.cluster_token
+#   }
+# }
 
 resource "random_string" "suffix" {
   length  = 8
@@ -110,32 +110,32 @@ module "cluster" {
 // Setup all required resources for using the  bank-vaults operator
 // See https://github.com/banzaicloud/bank-vaults
 // ----------------------------------------------------------------------------
-module "vault" {
-  source         = "./modules/vault"
-  cluster_name   = local.cluster_name
-  vault_user     = var.vault_user
-  force_destroy  = var.force_destroy
-  external_vault = local.external_vault
-  use_vault      = var.use_vault
-  region         = var.region
-}
+# module "vault" {
+#   source         = "./modules/vault"
+#   cluster_name   = local.cluster_name
+#   vault_user     = var.vault_user
+#   force_destroy  = var.force_destroy
+#   external_vault = local.external_vault
+#   use_vault      = var.use_vault
+#   region         = var.region
+# }
 
-// ----------------------------------------------------------------------------
-// Setup all required resources for using Velero for cluster backups
-// ----------------------------------------------------------------------------
-module "backup" {
-  source = "./modules/backup"
+# // ----------------------------------------------------------------------------
+# // Setup all required resources for using Velero for cluster backups
+# // ----------------------------------------------------------------------------
+# module "backup" {
+#   source = "./modules/backup"
 
-  enable_backup      = var.enable_backup
-  cluster_name       = local.cluster_name
-  force_destroy      = var.force_destroy
-  velero_username    = var.velero_username
-  create_velero_role = var.create_velero_role
-}
+#   enable_backup      = var.enable_backup
+#   cluster_name       = local.cluster_name
+#   force_destroy      = var.force_destroy
+#   velero_username    = var.velero_username
+#   create_velero_role = var.create_velero_role
+# }
 
-// ----------------------------------------------------------------------------
-// Setup all required Route 53 resources if External DNS / Cert Manager is enabled
-// ----------------------------------------------------------------------------
+# // ----------------------------------------------------------------------------
+# // Setup all required Route 53 resources if External DNS / Cert Manager is enabled
+# // ----------------------------------------------------------------------------
 module "dns" {
   source                         = "./modules/dns"
   apex_domain                    = var.apex_domain
@@ -150,20 +150,20 @@ module "dns" {
   manage_subdomain               = var.manage_subdomain
 }
 
-module "health" {
-  source               = "./modules/health"
-  is_jx2               = var.is_jx2
-  install_kuberhealthy = var.install_kuberhealthy
-}
+# module "health" {
+#   source               = "./modules/health"
+#   is_jx2               = var.is_jx2
+#   install_kuberhealthy = var.install_kuberhealthy
+# }
 
-module "nginx" {
-  source                 = "./modules/nginx"
-  is_jx2                 = var.is_jx2
-  create_nginx           = var.create_nginx
-  nginx_release_name     = var.nginx_release_name
-  nginx_namespace        = var.nginx_namespace
-  nginx_chart_version    = var.nginx_chart_version
-  create_nginx_namespace = var.create_nginx_namespace
-  nginx_values_file      = var.nginx_values_file
+# module "nginx" {
+#   source                 = "./modules/nginx"
+#   is_jx2                 = var.is_jx2
+#   create_nginx           = var.create_nginx
+#   nginx_release_name     = var.nginx_release_name
+#   nginx_namespace        = var.nginx_namespace
+#   nginx_chart_version    = var.nginx_chart_version
+#   create_nginx_namespace = var.create_nginx_namespace
+#   nginx_values_file      = var.nginx_values_file
 
-}
+# }

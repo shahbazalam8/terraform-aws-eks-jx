@@ -17,28 +17,28 @@ locals {
     // jx2 
     is_jx2 = var.is_jx2
     // Storage Buckets
-    enable_logs_storage       = var.enable_logs_storage
-    logs_storage_bucket       = length(module.cluster.logs_jenkins_x) > 0 ? module.cluster.logs_jenkins_x[0] : ""
-    enable_reports_storage    = var.enable_reports_storage
-    reports_storage_bucket    = length(module.cluster.reports_jenkins_x) > 0 ? module.cluster.reports_jenkins_x[0] : ""
-    enable_repository_storage = var.enable_repository_storage
-    repository_storage_bucket = length(module.cluster.repository_jenkins_x) > 0 ? module.cluster.repository_jenkins_x[0] : ""
+    # enable_logs_storage       = var.enable_logs_storage
+    # logs_storage_bucket       = length(module.cluster.logs_jenkins_x) > 0 ? module.cluster.logs_jenkins_x[0] : ""
+    # enable_reports_storage    = var.enable_reports_storage
+    # reports_storage_bucket    = length(module.cluster.reports_jenkins_x) > 0 ? module.cluster.reports_jenkins_x[0] : ""
+    # enable_repository_storage = var.enable_repository_storage
+    # repository_storage_bucket = length(module.cluster.repository_jenkins_x) > 0 ? module.cluster.repository_jenkins_x[0] : ""
     // Vault
-    vault_kms_key        = module.vault.kms_vault_unseal
-    vault_bucket         = module.vault.vault_unseal_bucket
-    vault_dynamodb_table = module.vault.vault_dynamodb_table
-    vault_user           = var.vault_user
-    vault_url            = var.vault_url
-    external_vault       = local.external_vault
-    use_vault            = var.use_vault
+    # vault_kms_key        = module.vault.kms_vault_unseal
+    # vault_bucket         = module.vault.vault_unseal_bucket
+    # vault_dynamodb_table = module.vault.vault_dynamodb_table
+    # vault_user           = var.vault_user
+    # vault_url            = var.vault_url
+    # external_vault       = local.external_vault
+    # use_vault            = var.use_vault
     // AWS Secrets Manager
     use_asm = var.use_asm
     // Velero
-    enable_backup     = var.enable_backup
-    backup_bucket_url = module.backup.backup_bucket_url
-    velero_namespace  = var.velero_namespace
-    velero_schedule   = var.velero_schedule
-    velero_ttl        = var.velero_ttl
+    # enable_backup     = var.enable_backup
+    # backup_bucket_url = module.backup.backup_bucket_url
+    # velero_namespace  = var.velero_namespace
+    # velero_schedule   = var.velero_schedule
+    # velero_ttl        = var.velero_ttl
     // DNS
     tls_secret_name            = local.tls_secret_name
     enable_external_dns        = var.enable_external_dns
